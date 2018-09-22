@@ -1,4 +1,4 @@
-(defproject atomist/cljs-http "0.0.1"
+(defproject com.atomist/cljs-http "0.0.2"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [cljs-node-io "0.5.0"]

@@ -12,7 +12,7 @@
   (clj->js {:method (or (:request-method req) :get)
             :port (or (:server-port req) (if (= :https (:scheme req)) 443 80))
             :hostname (:server-name req)
-            :path (str (:uri req) (if-let [s (:query-string req)] (str "?" s) ""))
+            :path (js/encodeURI (str (:uri req) (if-let [s (:query-string req)] (str "?" s) "")))
             :headers (:headers req)}))
 
 (defn clean-response
