@@ -1,0 +1,14 @@
+{
+  "name": "cljs-http",
+  "version": "0.1.0",
+  "author": "jim@atomist.com",
+  "description": "cljs api for node clj-http",
+  "scripts": {
+    "build:watch": "shadow-cljs watch script",
+    "build": "shadow-cljs release release"
+  },
+  "devDependencies": {
+    "shadow-cljs": "^2.8.83",
+    "source-map-support": "0.5.9"
+  }
+}

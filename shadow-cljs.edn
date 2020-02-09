@@ -1,0 +1,3 @@
+{:deps {:aliases [:dev :test]}
+ :builds {:script {:target    :node-library
+                   :output-to "index.js"}}}

@@ -1,0 +1,42 @@
+{:paths ["src"]
+ :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        org.clojure/clojurescript {:mvn/version "1.10.520"}
+        cljs-node-io {:mvn/version "1.1.2"}
+        noencore {:mvn/version "0.1.16"}
+        com.cognitect/transit-cljs {:mvn/version "0.8.256"}}
+ :aliases
+ {:dev {:paths ["src"]
+        :extra-deps {org.clojure/clojure {:mvn/version "1.10.1"}
+                     org.clojure/clojurescript {:mvn/version "1.10.520"}
+                     thheller/shadow-cljs {:mvn/version "2.8.83"}}}
+  
+  :test {:extra-paths ["test"]
+         :extra-deps {olical/cljs-test-runner {:mvn/version "3.7.0"}}
+         :main-opts ["-m" "cljs-test-runner.main"]}
+  
+  ;; jar creation from juxt
+  :pack {:extra-deps {pack/pack.alpha {:git/url "https://github.com/juxt/pack.alpha.git"
+                                       :sha "d9023b24c3d589ba6ebc66c5a25c0826ed28ead5"}}
+         :main-opts ["-m" "mach.pack.alpha.skinny" "--no-libs"]}
+  
+  ;; -> clojars - deps-deploy (mostly pomengranate)
+  :deploy {:extra-deps {deps-deploy {:mvn/version "RELEASE"}}
+           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy" "api-cljs.jar"]}
+  
+  ;; metav for versioning
+  :metav {:extra-deps {metav {:mvn/version "LATEST"}}}
+  :artifact-name {:extra-deps {metav {:mvn/version "LATEST"}}
+                  :main-opts ["-m" "metav.display"]}
+  :release {:extra-deps {metav {:mvn/version "LATEST"}}
+            :main-opts ["-m" "metav.release"
+                        "--spit"
+                        "--output-dir" "src"
+                        "--namespace" "http.meta"
+                        "--formats" "cljs"
+                        "--without-sign"
+                        ]}
+  :spit     {:extra-deps {metav {:mvn/version "LATEST"}}
+             :main-opts ["-m" "metav.spit"
+                         "--output-dir" "src"
+                         "--namespace" "http.meta"
+                         "--formats" "cljs"]}}}
