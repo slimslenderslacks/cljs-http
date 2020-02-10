@@ -18,13 +18,13 @@
   
   ;; -> clojars - deps-deploy (mostly pomengranate)
   :deploy {:extra-deps {deps-deploy {:mvn/version "RELEASE"}}
-           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy" "api-cljs.jar"]}
+           :main-opts ["-m" "deps-deploy.deps-deploy" "deploy" "target/app.jar"]}
   
   ;; metav for versioning
-  :metav {:extra-deps {metav {:mvn/version "LATEST"}}}
+  :metav {:extra-deps {metav {:git/url "https://github.com/jgrodziski/metav.git" :sha "43ba759dad353cd6a6102e8f9ab7d2390c6e4dae"}}}
   :artifact-name {:extra-deps {metav {:mvn/version "LATEST"}}
                   :main-opts ["-m" "metav.display"]}
-  :release {:extra-deps {metav {:mvn/version "LATEST"}}
+  :release {:extra-deps {metav {:git/url "https://github.com/jgrodziski/metav.git" :sha "43ba759dad353cd6a6102e8f9ab7d2390c6e4dae"}}
             :main-opts ["-m" "metav.release"
                         "--spit"
                         "--output-dir" "src"
@@ -32,7 +32,7 @@
                         "--formats" "cljs"
                         "--without-sign"
                         "--pom"]}
-  :spit     {:extra-deps {metav {:mvn/version "LATEST"}}
+  :spit     {:extra-deps {metav {:git/url "https://github.com/jgrodziski/metav.git" :sha "43ba759dad353cd6a6102e8f9ab7d2390c6e4dae"}}
              :main-opts ["-m" "metav.spit"
                          "--output-dir" "src"
                          "--namespace" "http.meta"
