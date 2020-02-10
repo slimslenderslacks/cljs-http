@@ -11,3 +11,4 @@ index.js
 .cljs_node_repl
 main.js
 pom.xml
+.shadow-cljs/
