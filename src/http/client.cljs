@@ -332,4 +332,14 @@
         (prn (:status response))
         (prn (map :login (:body response)))))
 
-  (go (prn (<! (get "http://api.burningswell.dev/continents")))))
+  (go (prn (<! (get "http://api.burningswell.dev/continents"))))
+
+  ;; demonstrate problem with url encodable parameters inside query parameters
+  (go (cljs.pprint/pprint
+       (->> (<! (http.client/get "https://api.github.com/repos/slimslender/spring-boot-220/pulls?state=open&head=slimslender:slimtest"
+                                 {:headers {"User-Agent" "atomist"
+                                            "Authorization" "xxxxxx"}
+                                  :query-params {:state "open"
+                                                 :head "slimslender:slimtest"}}))
+            :body
+            (map :number)))))

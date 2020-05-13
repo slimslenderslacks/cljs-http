@@ -12,3 +12,4 @@ index.js
 main.js
 pom.xml
 .shadow-cljs/
+.nrepl-port
