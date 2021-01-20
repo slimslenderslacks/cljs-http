@@ -3,6 +3,6 @@
 
 (def module-name "cljs-http")
 (def path ".")
-(def version "0.1.4")
-(def tag "v0.1.4")
-(def generated-at "2020-05-13T22:12:53Z")
+(def version "0.2.0")
+(def tag "v0.2.0")
+(def generated-at "2021-01-20T21:27:27Z")
