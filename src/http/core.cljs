@@ -50,7 +50,7 @@
               (recur (merge-with conj response stuff))))))
 
     (when body
-      (do (prn body) (.write client body)))
+      (.write client body))
 
     (doto client
       (.on "error" (fn [error]
